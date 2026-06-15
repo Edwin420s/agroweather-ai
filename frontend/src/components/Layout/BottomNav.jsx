@@ -22,7 +22,7 @@ export const BottomNav = () => {
             }`
           }
         >
-          <span className="material-symbols-outlined" style={item.path === '/' && { fontVariationSettings: "'FILL' 1" }}>
+          <span className="material-symbols-outlined" style={item.path === '/' ? { fontVariationSettings: "'FILL' 1" } : undefined}>
             {item.icon}
           </span>
           <span className="font-label-sm text-label-sm">{item.label}</span>
