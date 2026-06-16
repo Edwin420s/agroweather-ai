@@ -11,6 +11,12 @@ class WeatherService {
     }
     
     async fetchWeatherData(lat, lon, days = 7) {
+        // Check if API key is missing or placeholder
+        if (!this.apiKey || this.apiKey === 'wai_your_api_key_here' || this.apiKey.trim() === '') {
+            console.warn('No valid API key configured, using mock weather data');
+            return this.generateMockWeatherData();
+        }
+
         try {
             const response = await axios.get(`${this.baseURL}/weather`, {
                 params: {
