@@ -21,7 +21,7 @@ class RecommendationEngine {
         if (hasRainInForecast || rainProbability > 50 || isRaining) {
             recommendations.push({
                 type: 'weather_alert',
-                title: '🌧️ Rain Expected',
+                title: 'Rain Expected',
                 description: 'Rain is expected in the next 48 hours. Take necessary precautions.',
                 action: isRaining ? 'Avoid field work until rain subsides.' : 'Prepare drainage systems and delay fertilizer application.'
             });
@@ -30,7 +30,7 @@ class RecommendationEngine {
         if (windSpeed > 30) {
             recommendations.push({
                 type: 'weather_alert',
-                title: '💨 Strong Winds Detected',
+                title: 'Strong Winds Detected',
                 description: `Wind speeds reaching ${windSpeed} km/h can damage crops.`,
                 action: 'Avoid pesticide spraying. Consider windbreaks if winds persist.'
             });
@@ -39,7 +39,7 @@ class RecommendationEngine {
         if (temperature > 30) {
             recommendations.push({
                 type: 'weather_alert',
-                title: '🌡️ High Temperature Alert',
+                title: 'High Temperature Alert',
                 description: `Temperatures at ${temperature}°C may cause heat stress.`,
                 action: 'Increase irrigation frequency. Provide shade for sensitive crops.'
             });
@@ -48,7 +48,7 @@ class RecommendationEngine {
         if (temperature < 10) {
             recommendations.push({
                 type: 'weather_alert',
-                title: '❄️ Low Temperature Alert',
+                title: 'Low Temperature Alert',
                 description: `Cold temperatures (${temperature}°C) may affect crop growth.`,
                 action: 'Delay planting sensitive crops. Use mulch to protect soil warmth.'
             });
@@ -63,7 +63,7 @@ class RecommendationEngine {
                 if (cropRecs.ideal_conditions.requires_rain) {
                     recommendations.push({
                         type: 'crop_recommendation',
-                        title: `🌱 ${cropRecs.name}: Good Planting Conditions`,
+                        title: `${cropRecs.name}: Good Planting Conditions`,
                         description: `Rain expected in the coming days creates favorable conditions for ${cropRecs.name} planting.`,
                         action: cropRecs.recommendations.planting_good
                     });
@@ -71,7 +71,7 @@ class RecommendationEngine {
             } else if (temperature > 25 && !hasRainInForecast) {
                 recommendations.push({
                     type: 'crop_recommendation',
-                    title: `💧 ${cropRecs.name}: Irrigation Needed`,
+                    title: `${cropRecs.name}: Irrigation Needed`,
                     description: `Dry and warm conditions require active irrigation for ${cropRecs.name}.`,
                     action: cropRecs.recommendations.irrigation_needed
                 });
@@ -81,7 +81,7 @@ class RecommendationEngine {
             if (rainProbability > 60 || (hasRainInForecast && temperature > 20)) {
                 recommendations.push({
                     type: 'pest_alert',
-                    title: `🐛 ${cropRecs.name}: Disease Risk Alert`,
+                    title: `${cropRecs.name}: Disease Risk Alert`,
                     description: `Humid conditions may promote fungal diseases in ${cropRecs.name}.`,
                     action: cropRecs.recommendations.disease_risk
                 });
@@ -90,7 +90,7 @@ class RecommendationEngine {
             // General care
             recommendations.push({
                 type: 'general_care',
-                title: `📋 ${cropRecs.name} Care Tips`,
+                title: `${cropRecs.name} Care Tips`,
                 description: cropRecs.general_care,
                 action: cropRecs.recommendations.general
             });
@@ -99,7 +99,7 @@ class RecommendationEngine {
             if (hasRainInForecast || rainProbability > 40) {
                 recommendations.push({
                     type: 'general_recommendation',
-                    title: '🌾 General Farming Advice',
+                    title: 'General Farming Advice',
                     description: 'Rainy conditions are favorable for most crops.',
                     action: 'Consider planting moisture-loving crops. Prepare soil before rains intensify.'
                 });
@@ -108,7 +108,7 @@ class RecommendationEngine {
             if (windSpeed > 20) {
                 recommendations.push({
                     type: 'general_recommendation',
-                    title: '🌬️ Wind Advisory',
+                    title: 'Wind Advisory',
                     description: 'Windy conditions may affect crop stability.',
                     action: 'Avoid spraying operations. Check stakes and supports for climbing crops.'
                 });
@@ -119,7 +119,7 @@ class RecommendationEngine {
         if (recommendations.length === 0) {
             recommendations.push({
                 type: 'general_info',
-                title: '📊 Weather Update',
+                title: 'Weather Update',
                 description: 'Current conditions are normal for agricultural activities.',
                 action: 'Continue with regular farming operations. Monitor forecast for changes.'
             });
@@ -151,28 +151,28 @@ class RecommendationEngine {
                 level: 'High',
                 color: '#ef4444',
                 message: 'Heavy rain expected. High risk of flooding and crop damage.',
-                icon: '⚠️'
+                icon: 'warning'
             };
         } else if (hasStrongWind) {
             return {
                 level: 'Medium',
                 color: '#f59e0b',
                 message: 'Strong winds detected. Moderate risk to crops and spraying operations.',
-                icon: '🌬️'
+                icon: 'air'
             };
         } else if (hasExtremeTemp) {
             return {
                 level: 'Medium',
                 color: '#f59e0b',
                 message: 'Extreme temperatures may affect crop growth.',
-                icon: '🌡️'
+                icon: 'thermostat'
             };
         } else {
             return {
                 level: 'Low',
                 color: '#10b981',
                 message: 'Normal weather conditions. Low risk for agricultural activities.',
-                icon: '✅'
+                icon: 'check_circle'
             };
         }
     }

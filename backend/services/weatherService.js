@@ -6,7 +6,7 @@ class WeatherService {
         this.apiKey = process.env.WEATHER_AI_KEY;
         
         if (!this.apiKey) {
-            console.error('⚠️  WEATHER_AI_KEY not found in environment variables');
+            console.error('WEATHER_AI_KEY not found in environment variables');
         }
     }
     

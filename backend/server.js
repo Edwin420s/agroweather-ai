@@ -68,7 +68,7 @@ app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 AgroWeather AI Backend running on port ${PORT}`);
-    console.log(`📍 Health check: http://localhost:${PORT}/health`);
-    console.log(`🌤️  Weather endpoint: http://localhost:${PORT}/api/weather?city=Nairobi&crop=maize`);
+    console.log(`AgroWeather AI Backend running on port ${PORT}`);
+    console.log(`Health check: http://localhost:${PORT}/health`);
+    console.log(`Weather endpoint: http://localhost:${PORT}/api/weather?city=Nairobi&crop=maize`);
 });
